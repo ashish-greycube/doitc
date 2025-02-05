@@ -16,21 +16,21 @@
   "column_break_rquuo",
   "attendance_type",
   "reasons",
-  "amended_from"
+  "details"
  ],
  "fields": [
   {
    "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
-   "label": "Date",
+   "label": "Creation Date",
    "read_only": 1
   },
   {
    "fieldname": "request_type",
    "fieldtype": "Select",
    "label": "Request Type",
-   "options": "\nPersonal\nManagement"
+   "options": "Personal\nManagement"
   },
   {
    "fieldname": "employee_no",
@@ -75,20 +75,15 @@
    "options": "\nGovernment Visit\nCustomer Visit"
   },
   {
-   "fieldname": "amended_from",
-   "fieldtype": "Link",
-   "label": "Amended From",
-   "no_copy": 1,
-   "options": "Employee Attendance Request DT",
-   "print_hide": 1,
-   "read_only": 1,
-   "search_index": 1
+   "fieldname": "details",
+   "fieldtype": "Small Text",
+   "label": "Details"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-31 08:18:14.543278",
+ "modified": "2025-02-05 11:43:44.461618",
  "modified_by": "Administrator",
  "module": "Doitc",
  "name": "Employee Attendance Request DT",

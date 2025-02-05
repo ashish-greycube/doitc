@@ -24,7 +24,7 @@
    "default": "Today",
    "fieldname": "date",
    "fieldtype": "Date",
-   "label": "Date",
+   "label": "Creation Date",
    "read_only": 1
   },
   {
@@ -60,7 +60,7 @@
   {
    "fieldname": "leave_date",
    "fieldtype": "Date",
-   "label": "Leave date"
+   "label": "Leave Start date"
   },
   {
    "fieldname": "return_date",
@@ -74,8 +74,9 @@
   },
   {
    "fieldname": "no_of_delay",
-   "fieldtype": "Float",
-   "label": "No of Delay"
+   "fieldtype": "Int",
+   "label": "No of Delay Days",
+   "read_only": 1
   },
   {
    "fieldname": "amended_from",
@@ -91,7 +92,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-01-31 08:26:26.579472",
+ "modified": "2025-02-05 12:07:22.951796",
  "modified_by": "Administrator",
  "module": "Doitc",
  "name": "Return From Vacation DT",
