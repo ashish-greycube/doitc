@@ -4,6 +4,7 @@ app_publisher = "GreyCube Technologies"
 app_description = "Customization For Doitc"
 app_email = "admin@greycube.in"
 app_license = "MIT"
+required_apps = ["etqanone"]
 
 # Includes in <head>
 # ------------------
@@ -31,6 +32,10 @@ app_license = "MIT"
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
+
+doctype_js = {
+    "Payment Request Eqo": "public/js/payment_request_eqo.js",
+}
 
 # Home Pages
 # ----------
