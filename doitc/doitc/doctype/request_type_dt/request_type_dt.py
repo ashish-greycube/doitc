@@ -4,5 +4,5 @@
 # import frappe
 from frappe.model.document import Document
 
-class PaymentRequestDT(Document):
+class RequestTypeDT(Document):
 	pass
