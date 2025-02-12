@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "PMR-.#####",
  "creation": "2025-02-07 15:17:42.765107",
  "default_view": "List",
  "doctype": "DocType",
@@ -109,13 +110,15 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-02-08 09:18:44.341265",
+ "modified": "2025-02-11 07:35:56.615420",
  "modified_by": "Administrator",
  "module": "Doitc",
  "name": "Permission Request DT",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -125,6 +128,7 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],

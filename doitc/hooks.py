@@ -35,6 +35,7 @@ required_apps = ["etqanone"]
 
 doctype_js = {
     "Payment Request Eqo": "public/js/payment_request_eqo.js",
+    "Company": "public/js/company.js",
 }
 
 # Home Pages
@@ -68,6 +69,7 @@ doctype_js = {
 
 # before_install = "doitc.install.before_install"
 # after_install = "doitc.install.after_install"
+after_migrate = "doitc.migrations.after_migrations"
 
 # Uninstallation
 # ------------
@@ -132,23 +134,13 @@ doctype_js = {
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"doitc.tasks.all"
-# 	],
-# 	"daily": [
-# 		"doitc.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"doitc.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"doitc.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"doitc.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"cron": {
+        "30 1 1 * *": [
+            "doitc.api.set_available_permission_balance_every_month_in_employee"
+        ]
+    }
+}
 
 # Testing
 # -------

@@ -117,7 +117,7 @@
    "fieldname": "payment_request",
    "fieldtype": "Link",
    "label": "Payment Request",
-   "options": "Payment Request DT"
+   "options": "Payment Request Eqo"
   },
   {
    "fieldname": "amended_from",
@@ -133,7 +133,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-02-08 13:29:59.090687",
+ "modified": "2025-02-11 09:22:17.916530",
  "modified_by": "Administrator",
  "module": "Doitc",
  "name": "Payment Order DT",

@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "EAR-.#####",
  "creation": "2025-01-31 07:22:53.975992",
  "default_view": "List",
  "doctype": "DocType",
@@ -16,7 +17,8 @@
   "column_break_rquuo",
   "attendance_type",
   "reasons",
-  "details"
+  "details",
+  "amended_from"
  ],
  "fields": [
   {
@@ -27,6 +29,7 @@
    "read_only": 1
   },
   {
+   "default": "Personal",
    "fieldname": "request_type",
    "fieldtype": "Select",
    "label": "Request Type",
@@ -39,7 +42,7 @@
    "options": "Employee"
   },
   {
-   "fetch_from": "employee_no.employee",
+   "fetch_from": "employee_no.employee_name",
    "fieldname": "employee_name",
    "fieldtype": "Data",
    "label": "Employee Name"
@@ -66,7 +69,7 @@
    "fieldname": "attendance_type",
    "fieldtype": "Select",
    "label": "Attendance Type",
-   "options": "\nIn\nOut"
+   "options": "\nIN\nOUT"
   },
   {
    "fieldname": "reasons",
@@ -78,18 +81,30 @@
    "fieldname": "details",
    "fieldtype": "Small Text",
    "label": "Details"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Employee Attendance Request DT",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-02-05 11:43:44.461618",
+ "modified": "2025-02-10 15:01:30.844124",
  "modified_by": "Administrator",
  "module": "Doitc",
  "name": "Employee Attendance Request DT",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {
+   "cancel": 1,
    "create": 1,
    "delete": 1,
    "email": 1,
@@ -99,6 +114,7 @@
    "report": 1,
    "role": "System Manager",
    "share": 1,
+   "submit": 1,
    "write": 1
   }
  ],

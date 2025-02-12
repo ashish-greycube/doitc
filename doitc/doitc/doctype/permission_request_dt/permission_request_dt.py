@@ -6,7 +6,7 @@ from frappe import _
 from frappe.model.document import Document
 
 class PermissionRequestDT(Document):
-	def validate(self):
+	def on_submit(self):
 		self.get_balance()
 
 	def get_balance(self):
@@ -30,8 +30,9 @@ class PermissionRequestDT(Document):
 	
 		# Updating the APB in Employee
 		doc.custom_available_permission_balance = remaining_balance
-		doc.save()
+		doc.add_comment("Comment", "Permission Balance Deducted {0} hrs due to {1}".format(absent_hrs, self.name))
+		doc.save(ignore_permissions=True)
 
 		# Displaying the message of Changes
-		frappe.msgprint("Available Permission Balance is deducted in employee {0}".format(emp_no))
+		frappe.msgprint("Available Permission Balance is deducted in employee {0}".format(emp_no), alert=True)
 
