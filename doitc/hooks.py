@@ -4,7 +4,7 @@ app_publisher = "GreyCube Technologies"
 app_description = "Customization For Doitc"
 app_email = "admin@greycube.in"
 app_license = "MIT"
-required_apps = ["etqanone"]
+required_apps = ["ashish-greycube/etqanone"]
 
 # Includes in <head>
 # ------------------
