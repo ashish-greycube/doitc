@@ -17,16 +17,10 @@ class EmployeeAttendanceRequestDT(Document):
 		employee_default_shift = frappe.db.get_value("Employee",self.employee_no,"default_shift")
 		if not employee_default_shift:
 			frappe.throw("Please set default shift in employee")
-		else :
-			shift_start_time = frappe.db.get_value("Shift Type",employee_default_shift,"start_time")
-			shift_end_time = frappe.db.get_value("Shift Type",employee_default_shift,"end_time")
 
 		employee_checkin_doc.employee = self.employee_no
 		employee_checkin_doc.log_type = self.attendance_type
-		if self.attendance_type == "IN":
-			employee_checkin_doc.time = get_datetime(get_date_str(self.date) + " " + cstr(shift_start_time))
-		elif self.attendance_type == "OUT":
-			employee_checkin_doc.time = get_datetime(get_date_str(self.date) + " " + cstr(shift_end_time))
+		employee_checkin_doc.time = get_datetime(get_date_str(self.date) + " " + cstr(self.request_time))
 		
 		employee_checkin_doc.custom_employee_attendance_request_reference = self.name
 		employee_checkin_doc.save(ignore_permissions=True)
