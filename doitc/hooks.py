@@ -36,6 +36,8 @@ required_apps = ["ashish-greycube/etqanone"]
 doctype_js = {
     "Payment Request Eqo": "public/js/payment_request_eqo.js",
     "Company": "public/js/company.js",
+    "Project" : "public/js/project.js",
+    "Sales Order" : "public/js/sales_order.js"
 }
 
 # Home Pages
@@ -123,13 +125,13 @@ after_migrate = "doitc.migrations.after_migrations"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+    "Sales Order" : {
+        "on_update" : [
+            "doitc.api.validate_cost_center"
+		]
+	}
+}
 
 # Scheduled Tasks
 # ---------------

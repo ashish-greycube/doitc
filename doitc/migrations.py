@@ -60,6 +60,54 @@ def create_custom_fields_in_core_doctype():
                 translatable=0,
                 no_copy=1
             )
+        ],
+
+        "Project" : [
+            {
+                'fieldname' : 'custom_actual_cost',
+                'fieldtype' : 'Currency',
+                'label' : 'Actual Cost',
+                'is_system_generated' : 0,
+                'is_custom_field' : 1,
+                'insert_after' : 'estimated_costing'
+            },
+            {
+                'fieldname' : 'custom_net_profit',
+                'fieldtype' : 'Float',
+                'label' : 'Net Profit',
+                'is_system_generated' : 0,
+                'is_custom_field' : 1,
+                'insert_after' : 'custom_actual_cost'
+            },
+            {
+                'fieldname' : 'custom_profit_percentage',
+                'fieldtype' : 'Percent',
+                'label' : 'Profit Percentage',
+                'is_system_generated' : 0,
+                'is_custom_field' : 1,
+                'insert_after' : 'custom_net_profit'
+            }
+        ],
+        "Sales Order Item" : [
+            {
+                'fieldname' : 'custom_profit_percent',
+                'fieldtype' : 'Percent',
+                'label' : 'Profit (%)',
+                'is_system_generated' : 0,
+                'is_custom_field' : 1,
+                'insert_after' : 'net_amount'
+            }
+        ],
+        "Purchase Order" : [
+            {
+                'fieldname' : 'custom_po_type',
+                'fieldtype' : 'Link',
+                'options' : 'PO Type DT',
+                'label' : 'PO Type',
+                'is_system_generated' : 0,
+                'is_custom_field' : 1,
+                'insert_after' : 'schedule_date',
+            }
         ]
     }
     print("Creating custom fields for app Doitc:")
