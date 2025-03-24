@@ -1,7 +1,7 @@
 import frappe
 import datetime
 from frappe import _
-from frappe.utils import today, add_to_date
+from frappe.utils import today, add_to_date, get_link_to_form
 from frappe.model.mapper import get_mapped_doc
 
 
@@ -41,6 +41,9 @@ def get_actual_cost(company, cost_center, msg):
         filters = {'name' : company},
         fieldname = ['custom_parent_account_for_actual_cost']
     )
+    
+    if account == None:
+        frappe.throw("Please first set Parent Account for Company {0}".format(get_link_to_form("Company",company)))
 
     group_by = "Group by Voucher (Consolidated)"
 
@@ -58,7 +61,8 @@ def get_actual_cost(company, cost_center, msg):
         'include_dimensions' : include_dimensions,
         'include_default_book_entries' : include_default_book_entries
     })
-    
+
+
     data = execute(filters)
    
     actual_cost_value = 0
