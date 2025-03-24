@@ -43,7 +43,7 @@ def get_actual_cost(company, cost_center, msg):
     )
     
     if account == None:
-        frappe.throw("Please first set Parent Account for Company {0}".format(get_link_to_form("Company",company)))
+        frappe.throw("Please first set Parent Account for Actual Cost in Company {0}".format(get_link_to_form("Company",company)))
 
     group_by = "Group by Voucher (Consolidated)"
 
