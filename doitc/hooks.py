@@ -125,13 +125,9 @@ after_migrate = "doitc.migrations.after_migrations"
 # ---------------
 # Hook on document methods and events
 
-doc_events = {
-    "Sales Order" : {
-        "on_update" : [
-            "doitc.api.validate_cost_center"
-		]
-	}
-}
+# doc_events = {
+   
+# }
 
 # Scheduled Tasks
 # ---------------

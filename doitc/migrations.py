@@ -31,7 +31,16 @@ def create_custom_fields_in_core_doctype():
                 is_system_generated=0, 
                 translatable=0,
                 no_copy=1
-            )
+            ),
+            {
+                'fieldname' : 'custom_parent_account_for_actual_cost',
+                'fieldtype' : 'Link',
+                'label' : 'Parent Account For Actual Cost',
+                'is_system_generated' : 0,
+                'is_custom_field' : 1,
+                'insert_after' : 'custom_default_leave_without_pay',
+                'options' : 'Account'
+            },
         ],
 
         "HR Settings": [
@@ -88,6 +97,7 @@ def create_custom_fields_in_core_doctype():
                 'insert_after' : 'custom_net_profit'
             }
         ],
+
         "Sales Order Item" : [
             {
                 'fieldname' : 'custom_profit_percent',
@@ -98,6 +108,7 @@ def create_custom_fields_in_core_doctype():
                 'insert_after' : 'net_amount'
             }
         ],
+
         "Purchase Order" : [
             {
                 'fieldname' : 'custom_po_type',
@@ -107,6 +118,18 @@ def create_custom_fields_in_core_doctype():
                 'is_system_generated' : 0,
                 'is_custom_field' : 1,
                 'insert_after' : 'schedule_date',
+            }
+        ],
+        
+        "Sales Order" : [
+            {
+                'fieldname' : 'custom_cost_center',
+                'fieldtype' : 'Link',
+                'options' : 'Cost Center',
+                'label' : 'Cost Center',
+                'is_system_generated' : 0,
+                'is_custom_field' : 1,
+                'insert_after' : 'delivery_date',
             }
         ]
     }

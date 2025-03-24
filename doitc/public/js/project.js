@@ -2,7 +2,7 @@ frappe.ui.form.on('Project', {
 
     onload_post_render: function (frm) {
         if ((frm.doc.sales_order)) {
-            
+
             let sales_order_id = frm.doc.sales_order
             frappe.db.get_value('Sales Order', { 'name': sales_order_id }, ['custom_cost_center'])
                 .then(records => {
@@ -12,14 +12,14 @@ frappe.ui.form.on('Project', {
 
 
             frappe.db.get_list('Sales Order Item', {
-                fields: ['item_code', 'qty', 'rate'],
+                fields: ['item_code', 'qty', 'price_list_rate'],
                 filters: {
                     'parent': sales_order_id
                 }
             }).then(records => {
                 let estimated_cost = 0
                 for (let item in records) {
-                    let curr_amnt = (records[item].qty * records[item].rate)
+                    let curr_amnt = (records[item].qty * records[item].price_list_rate)
                     estimated_cost += curr_amnt
                 }
                 frm.set_value('estimated_costing', estimated_cost)
@@ -53,5 +53,4 @@ frappe.ui.form.on('Project', {
                 })
         }
     }
-
 });

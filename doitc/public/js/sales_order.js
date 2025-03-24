@@ -1,5 +1,13 @@
 frappe.ui.form.on('Sales Order', {
-    
+    setup: function(frm) {
+        frm.set_query("custom_cost_center", function() {
+            return {
+                "filters": {
+                    "company": frm.doc.company
+                }
+            };
+        });
+    },
 })
 
 // Calculating Profit Percent in Sales Order Child Table
