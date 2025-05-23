@@ -1,0 +1,111 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "ECT-#####",
+ "creation": "2025-05-23 14:45:50.403063",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "date",
+  "employee_no",
+  "employee_name",
+  "department",
+  "column_break_iyecb",
+  "company",
+  "amended_from",
+  "section_break_zwlhu",
+  "fetch_custody_details",
+  "employee_custody_transfer_details_dt"
+ ],
+ "fields": [
+  {
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Employee Custody Transfer DT",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "employee_no",
+   "fieldtype": "Link",
+   "label": "Employee No",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "employee_no.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name"
+  },
+  {
+   "fetch_from": "employee_no.department",
+   "fieldname": "department",
+   "fieldtype": "Link",
+   "label": "Department",
+   "options": "Department"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "column_break_iyecb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_zwlhu",
+   "fieldtype": "Section Break",
+   "label": "Custody Details"
+  },
+  {
+   "fieldname": "fetch_custody_details",
+   "fieldtype": "Button",
+   "label": "Fetch Custody Details"
+  },
+  {
+   "fieldname": "employee_custody_transfer_details_dt",
+   "fieldtype": "Table",
+   "label": "Employee Custody Transfer Details DT",
+   "options": "Employee Custody Transfer Details DT"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-05-23 14:58:40.336088",
+ "modified_by": "Administrator",
+ "module": "Doitc",
+ "name": "Employee Custody Transfer DT",
+ "naming_rule": "Expression (old style)",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
