@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "ECT-#####",
+ "autoname": "ECT-.#####",
  "creation": "2025-05-23 14:45:50.403063",
  "default_view": "List",
  "doctype": "DocType",
@@ -85,7 +85,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-05-23 14:58:40.336088",
+ "modified": "2025-05-26 06:44:55.772175",
  "modified_by": "Administrator",
  "module": "Doitc",
  "name": "Employee Custody Transfer DT",

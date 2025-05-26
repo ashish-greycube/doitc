@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "ECR-#####",
+ "autoname": "ECR-.#####",
  "creation": "2025-05-23 14:59:27.194370",
  "default_view": "List",
  "doctype": "DocType",
@@ -91,7 +91,7 @@
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2025-05-23 15:01:44.645236",
+ "modified": "2025-05-26 06:45:13.916970",
  "modified_by": "Administrator",
  "module": "Doitc",
  "name": "Employee Custody Return DT",
