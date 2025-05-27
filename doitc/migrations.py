@@ -176,6 +176,16 @@ def create_custom_fields_in_core_doctype():
                 'is_system_generated' : 0,
                 'is_custom_field' : 1,
                 'insert_after' : 'custom_custody_details_column_break',
+            },
+            {
+                'fieldname' : 'custom_project',
+                'fieldtype' : 'Link',
+                'options' : 'Project',
+                'label' : 'Project',
+                'read_only' : 1,
+                'is_system_generated' : 0,
+                'is_custom_field' : 1,
+                'insert_after' : 'custom_item_condition',
             }
         ],
 
