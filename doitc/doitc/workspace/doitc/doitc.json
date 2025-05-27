@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"hDTrlzVqqH\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">DOITC</span>\",\"col\":12}},{\"id\":\"k_PrBNCHbb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Permission Request\",\"col\":3}},{\"id\":\"G_RCg1e3-0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payment Order\",\"col\":3}},{\"id\":\"Mms5EBJg8g\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Attendance Request \",\"col\":3}},{\"id\":\"mfedegM8kN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Return From Vacation\",\"col\":3}}]",
+ "content": "[{\"id\":\"hDTrlzVqqH\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">DOITC</span>\",\"col\":12}},{\"id\":\"k_PrBNCHbb\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Permission Request\",\"col\":3}},{\"id\":\"G_RCg1e3-0\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Payment Order\",\"col\":3}},{\"id\":\"Mms5EBJg8g\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Employee Attendance Request \",\"col\":3}},{\"id\":\"mfedegM8kN\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Return From Vacation\",\"col\":3}},{\"id\":\"JTcyQfvPMk\",\"type\":\"card\",\"data\":{\"card_name\":\"Custody Doctypes\",\"col\":4}}]",
  "creation": "2025-02-08 07:15:57.595922",
  "custom_blocks": [],
  "docstatus": 0,
@@ -10,8 +10,48 @@
  "idx": 0,
  "is_hidden": 0,
  "label": "DOITC",
- "links": [],
- "modified": "2025-02-08 07:21:03.408953",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Custody Doctypes",
+   "link_count": 3,
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee Custody",
+   "link_count": 0,
+   "link_to": "Employee Custody DT",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee Custody Transfer",
+   "link_count": 0,
+   "link_to": "Employee Custody Transfer DT",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Employee Custody Return",
+   "link_count": 0,
+   "link_to": "Employee Custody Return DT",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2025-05-27 15:45:20.493615",
  "modified_by": "Administrator",
  "module": "Doitc",
  "name": "DOITC",
