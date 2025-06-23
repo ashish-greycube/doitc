@@ -1,5 +1,6 @@
-# Copyright (c) 2025, GreyCube Technologies and contributors
+# Copyright (c) 2024, Frappe Technologies Pvt. Ltd. and contributors
 # For license information, please see license.txt
+
 
 import frappe
 from frappe import _
@@ -54,15 +55,15 @@ def _set_gl_entries_by_account(dimension_list, filters, account, gl_entries_by_a
         .where(gl_entry[dimension].isin(dimension_list))
         .orderby(gl_entry.account, gl_entry.posting_date)
     )
-	
+
     if account:
         query = query.where(gl_entry.account.isin(account))
-        
-    # if filters.get("include_default_book_entries"):
-    #     default_finance_book = frappe.get_cached_value(
-    #         "Company", filters.company, "default_finance_book"
-    #     )
-    #     query = query.where(gl_entry.finance_book == default_finance_book)
+
+    if filters.get("include_default_book_entries"):
+        default_finance_book = frappe.get_cached_value(
+            "Company", filters.company, "default_finance_book"
+        )
+        query = query.where(gl_entry.finance_book == default_finance_book)
 
     # filter by dimensions
     accounting_dimensions = get_accounting_dimensions(as_list=False)
@@ -90,7 +91,7 @@ def _set_gl_entries_by_account(dimension_list, filters, account, gl_entries_by_a
 
     for entry in gl_entries:
         gl_entries_by_account.setdefault(entry.account, []).append(entry)
-
+    print(gl_entries_by_account.get('401011002 - الخصم المسموح به على المبيعات - الخدمات المهنية - D'), "========================")
 
 def _get_columns(dimension_list, filters=None):
     columns = get_columns(dimension_list)
@@ -118,7 +119,17 @@ def execute(filters=None):
 
     columns = _get_columns(dimension_list, filters)
     data = get_data(filters, dimension_list)
-    data.append(get_total_row(columns, data))
+    columns, totals = get_total_row(columns, data, filters)
+    
+    leaf = frappe.db.sql("""
+        SELECT name FROM `tabAccount` WHERE lft = rgt-1
+    """, pluck = 'name')
+    
+    data = [d for d in data if d.get('account') in leaf]
+    for d in data:
+        d['indent'] = 0
+
+    data.extend(totals)
 
     return columns, data
 
@@ -166,11 +177,11 @@ def get_data(filters, dimension_list):
         frappe.scrub(filters.get("dimension")),
     )
 
-    for _, dic in accounts_by_name.items():
-        if dic.get("root_type") == "Income":
-            for k in dic:
-                if flt(dic[k]) < 0:
-                    dic[k] = -1 * dic[k]
+    # for _, dic in accounts_by_name.items():
+    #     if dic.get("root_type") == "Income":
+    #         for k in dic:
+    #             if flt(dic[k]) < 0:
+    #                 dic[k] = -1 * dic[k]
 
     accumulate_values_into_parents(accounts, accounts_by_name, dimension_list)
     out = prepare_data(accounts, filters, company_currency, dimension_list)
@@ -179,19 +190,30 @@ def get_data(filters, dimension_list):
     return out
 
 
-def get_total_row(columns, data):
+
+
+def get_total_row(columns, data, filters):
     income, expense = {}, {}
     for d in data:
-        if d["account_name"] == "Income":
+        if d["account_name"] == "401 - الإيرادات":
             income = frappe._dict(d)
-        elif d["account_name"] == "Expenses":
+            income["account"] = "Total Revenue"
+        elif d["account_name"] == "50 - المصاريف وتكلفة الإيرادات":
             expense = frappe._dict(d)
+            expense["account"] = "Total Expense"
 
-    totals = {"account_name": "Profit (Loss)", "indent": 0, "warn_if_negative": 1}
+    pnl_totals = {
+        "account": "Profit (Loss)", "indent": 0, "warn_if_negative": 1}
+
     for d in columns:
         if d.get("options") == "currency" and d.get("fieldtype") == "Currency":
-            totals[d["fieldname"]] = income.get(d["fieldname"], 0) - expense.get(
+            pnl_totals[d["fieldname"]] = income.get(d["fieldname"], 0) + expense.get(
                 d["fieldname"], 0
             )
+            if income.get(d["fieldname"], 0) < expense.get(d["fieldname"], 0):
+                pnl_totals[d["fieldname"]] = -1 * pnl_totals[d["fieldname"]]
+            
+            if filters.get('hide_blanks') and not pnl_totals[d["fieldname"]]:
+                d['hidden'] = 1
 
-    return totals
+    return columns, [income, expense, pnl_totals]

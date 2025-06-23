@@ -68,5 +68,19 @@ frappe.query_reports["Cost Center Report"] = {
 				return frappe.db.get_link_options("Cost Center", txt);
 			},
 		},
+		{
+			fieldname: "hide_blanks",
+			label: __("Hide Blanks"),
+			fieldtype: "Check",
+		}
 	],
+
+	formatter: function (value, row, column, data, default_formatter) {
+		value = default_formatter(value, row, column, data);
+		console.log()
+		if (data.account == 'Total Revenue' || data.account == 'Total Expense' || data.account == 'Profit (Loss)'){
+			value = value.bold()
+		}
+		return value;
+	},
 };
